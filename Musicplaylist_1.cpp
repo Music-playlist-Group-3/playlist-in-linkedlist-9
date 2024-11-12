@@ -133,12 +133,15 @@ int getValidInput() {
     }
 }
 
+// Main function for managing the music playlist
 int main() {
-    Song* playlist = nullptr;
-    int choice, position;
-    string title, artist;
+    // Pointer to the head of the playlist
+    Song* playlist = nullptr; 
+    int choice, position;  
+    string title, artist;  
     
     do {
+        // Display the menu options
         cout << "\nMusic Playlist Menu:\n";
         cout << "1. Insert a song at the beginning\n";
         cout << "2. Insert a song at the end\n";
@@ -149,18 +152,22 @@ int main() {
         cout << "7. Display the playlist\n";
         cout << "8. Exit\n";
         cout << "Enter your choice: ";
-        choice =getValidInput();
+        
+        
+        choice = getValidInput(); 
         
         switch (choice) {
             case 1:
+                // Insert a song at the beginning of the playlist
                 cout << "Enter the song title: ";
-                cin >> ws; // To ignore leading whitespaces
+                cin >> ws; // Ignore leading whitespaces
                 getline(cin, title);
                 cout << "Enter the artist name: ";
                 getline(cin, artist);
                 insertAtBeginning(playlist, title, artist);
                 break;
             case 2:
+                // Insert a song at the end of the playlist
                 cout << "Enter the song title: ";
                 cin >> ws;
                 getline(cin, title);
@@ -169,8 +176,9 @@ int main() {
                 insertAtEnd(playlist, title, artist);
                 break;
             case 3:
+                // Insert a song at a specific position in the playlist
                 cout << "Enter the position: ";
-                 position=getValidInput();
+                position = getValidInput();
                 cout << "Enter the song title: ";
                 cin >> ws;
                 getline(cin, title);
@@ -179,26 +187,32 @@ int main() {
                 insertAtPosition(playlist, title, artist, position);
                 break;
             case 4:
+                
                 deleteAtBeginning(playlist);
                 break;
             case 5:
+                
                 deleteAtEnd(playlist);
                 break;
             case 6:
+                
                 cout << "Enter the position: ";
                 cin >> position;
                 deleteAtPosition(playlist, position);
                 break;
             case 7:
+                 
                 displayPlaylist(playlist);
                 break;
             case 8:
+                
                 cout << "Exiting the application.\n";
                 break;
             default:
+                 
                 cout << "Invalid choice. Please try again.\n";
         }
-    } while (choice != 8);
+    } while (choice != 8);  
 
     return 0;
 }
